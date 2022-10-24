@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PopulationLessThan2L</title>
+  </head>
+  <body>
+    <h5>Countries where population is Less than 2L</h5>
+    <h5 id="print"></h5>
+    <script>
+      var countryData = fetch("https://restcountries.com/v2/all")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          var countries = data
+            .filter((element) => element.population <= 200000)
+            .map(
+              (element) =>
+                `\n Country Name : ${element.name}\nPopulation : ${element.population}\n...................`
+            );
+          document.getElementById("print").innerText = `${countries}`;
+          //   console.table(countries);
+        });
+    </script>
+  </body>
+</html>

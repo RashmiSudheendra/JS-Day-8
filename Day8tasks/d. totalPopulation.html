@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Total population</title>
+  </head>
+  <body>
+    <h5>Total population of countries</h5>
+    <h5 id="print"></h5>
+    <h5 id="totpop"></h5>
+    <script>
+      var countryData = fetch("https://restcountries.com/v2/all")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          var listPop = data.map((ele) => {
+            var ele1 = ele.population;
+            console.log(ele1);
+          });
+          totalPop = data.reduce((acc, ele) => acc + ele.population);
+          console.log(totalPop);
+        });
+    </script>
+  </body>
+</html>
